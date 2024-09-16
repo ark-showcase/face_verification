@@ -27,7 +27,7 @@ encodeListKnown = findEncodings(images)
 # imgElon = face_recognition.load_image_file('ImagesBasic/elon_musk.jpg')
 # imgElon = cv2.cvtColor(imgElon, cv2.COLOR_BGR2RGB)
 
-imgTest = face_recognition.load_image_file('ImagesBasic/224635_1692255109665_1503057_n.jpg')
+imgTest = face_recognition.load_image_file('imagesBasic/224635_1692255109665_1503057_n.jpg')
 imgTest = cv2.cvtColor(imgTest, cv2.COLOR_BGR2RGB)
 
 # faceLoc = face_recognition.face_locations(imgElon)[0]
