@@ -2,3 +2,4 @@ venv/
 imagesBasic/
 testImage/
 db.sqlite3
+.idea/
