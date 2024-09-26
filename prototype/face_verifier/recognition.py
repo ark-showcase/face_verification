@@ -45,6 +45,3 @@ class FaceRecognition():
         print(f'{results[matchIndex]} {round(faceDist[matchIndex],2)}')
         print(f'name: {classNames[matchIndex]}')
         return classNames[matchIndex]
-
-obj = FaceRecognition()
-print(obj.find_match())
