@@ -37,4 +37,31 @@ video.addEventListener('play', () => {
 
 function captureImage(canvas, score){
     console.log(score)
+
+    const context = canvas.getContext('2d');
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+    // Convert the canvas to Blob (image data)
+    canvas.toBlob((blob) => {
+        // Prepare the FormData object to send via POST
+        const formData = new FormData();
+        formData.append('image', blob, 'captured-image.png');  // Append image as 'image' field
+
+        // Send the image to Django backend using fetch API
+        fetch('/face_verification_prototype/input_image/verify-face/', {  // Replace with your API endpoint
+            method: 'POST',
+            body: formData,
+            headers: {
+                // 'Content-Type': 'multipart/form-data' -> This is automatically set by the browser
+                'X-CSRFToken': csrfToken  // Add CSRF token for Django (if necessary)
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Image successfully uploaded:", data);
+        })
+        .catch(error => {
+            console.error("Error uploading image:", error);
+        });
+    }, 'image/png');
 }
