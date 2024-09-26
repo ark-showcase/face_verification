@@ -4,7 +4,7 @@ import face_recognition
 import os
 
 class FaceRecognition():
-    path = 'imagesBasic'
+    path = 'prototype/face_verifier/imagesBasic'
     myList = os.listdir(path)
 
     def get_images_and_classnames(self):
@@ -30,7 +30,7 @@ class FaceRecognition():
         encodeListKnown = self.findEncodings()
         _, classNames = self.get_images_and_classnames()
 
-        imgTest = face_recognition.load_image_file('testImage/224635_1692255109665_1503057_n.jpg')
+        imgTest = face_recognition.load_image_file('prototype/face_verifier/testImage/224635_1692255109665_1503057_n.jpg')
         imgTest = cv2.cvtColor(imgTest, cv2.COLOR_BGR2RGB)
 
         faceLocTest = face_recognition.face_locations(imgTest)[0]
