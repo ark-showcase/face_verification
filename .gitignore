@@ -1,5 +1,5 @@
 venv/
-imagesBasic/
-testImage/
+prototype/face_verifier/imagesBasic/
+prototype/face_verifier/testImage/
 db.sqlite3
 .idea/

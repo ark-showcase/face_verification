@@ -1,3 +1,5 @@
+const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+console.log(csrfToken)
 const video = document.getElementById('video')
 console.log(modelPath);
 Promise.all([
@@ -22,6 +24,9 @@ video.addEventListener('play', () => {
   faceapi.matchDimensions(canvas, displaySize)
   setInterval(async () => {
     const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
+    if(detections[0].expressions.neutral>0.80){
+        captureImage(canvas, detections[0].expressions.neutral)
+    }
     const resizedDetections = faceapi.resizeResults(detections, displaySize)
     canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
     faceapi.draw.drawDetections(canvas, resizedDetections)
@@ -29,3 +34,7 @@ video.addEventListener('play', () => {
     faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
   }, 100)
 })
+
+function captureImage(canvas, score){
+    console.log(score)
+}
